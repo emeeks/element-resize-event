@@ -1,5 +1,12 @@
 var exports = function exports(element, fn) {
-  var window = this
+  var window =
+    typeof self !== "undefined"
+      ? self
+      : typeof window !== "undefined"
+        ? window
+        : typeof this !== "undefined"
+          ? this
+          : { document: {} }
   var document = window.document
   var isIE
   var requestFrame
